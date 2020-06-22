@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="utf-8">
+<title>Catálogo de Partidas</title >
+</head>
+<body>
+<div align="center">
+	<div>
+	</div> <a href="nuevo">Crea nueva partida</a>
+	<br/><br/>
+	<table border="1" cellpadding="10">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Origen</th>
+					<th>Partida</th>
+					<th>Estatus Reg</th>
+				</tr>
+			</thead>
+		<tbody>
+			<tr th:each="cntpartida : ${listCntPartidas}">
+				<td th:text="${cntpartida.id}">Id</td>
+				<td th:text="${cntpartida.origen}">Id</td>
+				<td th:text="${cntpartida.partida}">Id</td>
+				<td th:text="${cntpartida.estatusReg}">Id</td>
+				
+				<td>
+					<a th:href="@{'/editar/' + ${cntpartida.id}}">
+					<img th:src="@{/images/edit-black.png}" title="Editar"/></a>										
+					<a th:href="@{'/borrar/' + ${cntpartida.id}}">
+					<img th:src="@{/images/delete-black.png}" title="Borrar"/></a>			
+				</td>
+			</tr>
+		</tbody>
+	</table>		
+</div>
+</body>
+</html>
