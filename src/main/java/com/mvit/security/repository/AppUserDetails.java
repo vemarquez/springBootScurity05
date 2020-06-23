@@ -15,15 +15,11 @@ import com.mvit.security.model.Role;
 import com.mvit.security.model.User;
 
 public class AppUserDetails implements UserDetails {
-	
-	 /**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
 	private static final Logger logger = LoggerFactory.getLogger(AppUserDetails.class); 
 	
-	//private static final long serialVersionUID = 1L;
 	private User user;
 	
 	public AppUserDetails(User user) {
@@ -72,5 +68,12 @@ public class AppUserDetails implements UserDetails {
 	public boolean isEnabled() {
 		return user.isEnabled();
 	}
+
+	@Override
+	public String toString() {
+		return "AppUserDetails [user=" + user + "]";
+	}
+	
+	
 
 }
