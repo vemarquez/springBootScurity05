@@ -12,7 +12,7 @@
 	<artifactId>springBootSecurity05</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springBootSecurity05</name>
-	<description>https://www.codejava.net/frameworks/spring-boot/spring-boot-security-role-based-authorization-tutorial</description>
+	<description></description>
 
 	<properties>
 		<java.version>1.8</java.version>
@@ -46,6 +46,10 @@
 			<groupId>com.oracle.ojdbc</groupId>
 			<artifactId>ojdbc8</artifactId>
 			<scope>runtime</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.thymeleaf.extras</groupId>
+			<artifactId>thymeleaf-extras-springsecurity5</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

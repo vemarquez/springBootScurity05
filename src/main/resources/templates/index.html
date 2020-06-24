@@ -1,13 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
 <meta charset="utf-8">
 <title>Catálogo de Partidas</title >
 </head>
 <body>
 <div align="center">
-	<div>
+	<div sec:autorize="isAuthenticated()">
+		Bienvenido <b><span style="color:blue" sec:authentication="name"></span></b>
+		&nbsp; <!-- no break space vemf 22/06/2020-->
+		<i><span sec:authentication="principal.authorities">Roles</span></i>
+			<form th:action="@{/logout}" method="post">
+				<input type="submit" value="Logout" />
+			</form>
+	</div>
+<div>
 	</div> <a href="nuevo">Crea nueva partida</a>
 	<br/><br/>
 	<table border="1" cellpadding="10">
@@ -17,6 +25,9 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 					<th>Origen</th>
 					<th>Partida</th>
 					<th>Estatus Reg</th>
+					
+					<th sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">Actions</th>	
+					
 				</tr>
 			</thead>
 		<tbody>
@@ -26,10 +37,10 @@ xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 				<td th:text="${cntpartida.partida}">Id</td>
 				<td th:text="${cntpartida.estatusReg}">Id</td>
 				
-				<td>
+				<td sec:authorize="hasAnyAuthority('ADMIN', 'EDITOR')">
 					<a th:href="@{'/editar/' + ${cntpartida.id}}">
 					<img th:src="@{/images/edit-black.png}" title="Editar"/></a>										
-					<a th:href="@{'/borrar/' + ${cntpartida.id}}">
+					<a sec:authorize="hasAuthority('ADMIN')" th:href="@{'/borrar/' + ${cntpartida.id}}">
 					<img th:src="@{/images/delete-black.png}" title="Borrar"/></a>			
 				</td>
 			</tr>
